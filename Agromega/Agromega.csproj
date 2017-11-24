@@ -46,13 +46,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServerCompact, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.2.0\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -122,12 +135,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -193,6 +200,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgroContext.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -228,14 +236,32 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CicloLunarController.cs" />
+    <Compile Include="Controllers\ClimaController.cs" />
+    <Compile Include="Controllers\DistritoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MesController.cs" />
+    <Compile Include="Controllers\NoticiasController.cs" />
+    <Compile Include="Controllers\ProduccionsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711242133556_AddProduccion.cs" />
+    <Compile Include="Migrations\201711242133556_AddProduccion.Designer.cs">
+      <DependentUpon>201711242133556_AddProduccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711242219012_Addnew.cs" />
+    <Compile Include="Migrations\201711242219012_Addnew.Designer.cs">
+      <DependentUpon>201711242219012_Addnew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Produccion.cs" />
+    <Compile Include="Models\TipoClima.cs" />
+    <Compile Include="Models\TipoSuelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -245,6 +271,7 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\csd.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -272,6 +299,32 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\Produccions\Delete.cshtml" />
+    <Content Include="Views\Produccions\Details.cshtml" />
+    <Content Include="Views\Produccions\Edit.cshtml" />
+    <Content Include="Views\Produccions\Index.cshtml" />
+    <Content Include="Views\Noticias\Index.cshtml" />
+    <Content Include="Views\Mes\Index.cshtml" />
+    <Content Include="Views\Distrito\Index.cshtml" />
+    <Content Include="Views\Clima\Index.cshtml" />
+    <Content Include="Views\CicloLunar\Index.cshtml" />
+    <Content Include="Views\Produccions\Create.cshtml" />
+    <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlceer40EN.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlcecompact40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\sqlceca40.dll" />
+    <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\README_ENU.txt" />
+    <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\msvcr90.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlcese40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlceqp40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlceme40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlceer40EN.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlcecompact40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\sqlceca40.dll" />
+    <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\README_ENU.txt" />
+    <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\msvcr90.dll" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -297,6 +350,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
+    <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -313,6 +368,14 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201711242133556_AddProduccion.resx">
+      <DependentUpon>201711242133556_AddProduccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711242219012_Addnew.resx">
+      <DependentUpon>201711242219012_Addnew.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
