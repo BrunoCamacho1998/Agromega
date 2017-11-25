@@ -1,44 +1,134 @@
 ﻿@model IEnumerable<Agromega.Models.Precio_Actual>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Produccion.NombreProducto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Año)
-        </th>
-        <th></th>
-    </tr>
-    <tr>
-        <td>
-            @ViewBag.prod
-        </td>
-    </tr>
-
+<br />
+<link rel="stylesheet" href="~/Content/Detail.css" />
+<body onload="openCity(event,'Precio');">
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Año)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Precio)
-            </td>
 
-        </tr>
+
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event,'Precio')">Precios</button>
+            <button class="tablinks" onclick="openCity(event,'Tonelada')">Pesos</button>
+        </div>
+        <div id="Precio" class="tabcontent">
+            <h2>@Html.DisplayFor(modelItem => item.Produccion.NombreProducto)</h2>
+            <hr />
+            <br />
+            <h3>PRECIOS POR AÑO</h3>
+            <br />
+            <h4>Historial (2014-2017)</h4>
+            <br />
+            <div class="row">
+
+                <div class="col-sm-3">
+                    <center><h6 style="background-color:#645047; color:white;">2014</h6></center>
+                    <center>@Html.DisplayFor(modelItem => item.F1)</center>
+                </div>
+
+                <div class="col-sm-3">
+                    <center><h6 style="background-color:#645047; color:white;">2015</h6></center>
+                    <center>@Html.DisplayFor(modelItem => item.F2)</center>
+                </div>
+
+                <div class="col-sm-3">
+                    <center><h6 style="background-color:#645047; color:white;">2016</h6></center>
+                    <center>@Html.DisplayFor(modelItem => item.F3)</center>
+                </div>
+
+                <div class="col-sm-3">
+                    <center><h6 style="background-color:#645047; color:white;">2017</h6></center>
+                    <center>@Html.DisplayFor(modelItem => item.F4)</center>
+                </div>
+
+            </div>
+
+            <br />
+            <h4>Proyeccion (2018-2019)</h4>
+            <br />
+            <div class="row">
+
+                <div class="col-sm-3">
+                    <center><h6 style="background-color:#645047; color:white;">2018</h6></center>
+                    <center>@Html.DisplayFor(modelItem => item.P1)</center>
+                </div>
+
+                <div class="col-sm-3">
+                    <center><h6 style="background-color:#645047; color:white;">2019</h6></center>
+                    <center>@Html.DisplayFor(modelItem => item.P2)</center>
+                </div>
+
+            </div>
+        </div>
+        <div id="Tonelada" class="tabcontent">
+            <h2>@Html.DisplayFor(modelItem => item.Produccion.NombreProducto)</h2>
+            <hr />
+            <br />
+            <h3>TONELADAS TOTALES POR AÑO</h3>
+            <br />
+            <h4>Historial (2014-2017)</h4>
+            <br />
+            <div class="row">
+
+                <div class="col-sm-3">
+                    <center><h6 style="background-color:#645047; color:white;">2014</h6></center>
+                    <center>@Html.DisplayFor(modelItem => item.T14)</center>
+                </div>
+
+                <div class="col-sm-3">
+                    <center><h6 style="background-color:#645047; color:white;">2015</h6></center>
+                    <center>@Html.DisplayFor(modelItem => item.T15)</center>
+                </div>
+
+                <div class="col-sm-3">
+                    <center><h6 style="background-color:#645047; color:white;">2016</h6></center>
+                    <center>@Html.DisplayFor(modelItem => item.T16)</center>
+                </div>
+
+                <div class="col-sm-3">
+                    <center><h6 style="background-color:#645047; color:white;">2017</h6></center>
+                    <center>@Html.DisplayFor(modelItem => item.T17)</center>
+                </div>
+
+            </div>
+
+            <br />
+            <h4>Proyeccion (2018-2019)</h4>
+            <br />
+            <div class="row">
+
+                <div class="col-sm-3">
+                    <center><h6 style="background-color:#645047; color:white;">2018</h6></center>
+                    <center>@Html.DisplayFor(modelItem => item.T1)</center>
+                </div>
+
+                <div class="col-sm-3">
+                    <center><h6 style="background-color:#645047; color:white;">2019</h6></center>
+                    <center>@Html.DisplayFor(modelItem => item.T2)</center>
+                </div>
+
+            </div>
+        </div>
     }
+    <div style="float:right; width:10%">
+        <p>
+            <h4>@Html.ActionLink("Regresar", "Index")</h4>
+        </p>
+    </div>
+</body>
 
-</table>

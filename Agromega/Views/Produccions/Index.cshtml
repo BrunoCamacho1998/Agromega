@@ -1,45 +1,46 @@
 ﻿@model IEnumerable<Agromega.Models.Produccion>
 @using Agromega.Models;
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+<br /><br /><br />
+<div style="width:100%">
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-5">
+            <h5><strong>Tipo de Cultivo</strong></h5>
+            @Html.DropDownList("Cultivo", ViewData["TipoCultivo"] as SelectList, htmlAttributes: new { @id = "CultivoId", @class = "form-control" })
+            <br />
+            <h5><strong>Tipo de Suelo</strong></h5>
+            @Html.DropDownList("TipoSuelo", ViewData["TipoSuelo"] as SelectList, htmlAttributes: new { @id = "TipoSueloId", @class = "form-control" })
+            <br />
+            <input type="submit" value="Buscar" class="btn" style="margin-left:25%" />
+        </div>
+        <div class="col-md-5">
+            <img src="~/Content/clima.jpg" style="align-self:center" />
+
+        </div>
+
+    </div>
+
 }
 
-<h2>Index</h2>
-
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-<div style="float:left;width:30%">
-    
-    @using (Html.BeginForm(FormMethod.Post))
-    {
-        @Html.DropDownList("Cultivo", ViewData["TipoCultivo"] as SelectList, htmlAttributes: new { @id = "CultivoId", @class = "form-control"})
-        <br />
-        @Html.DropDownList("TipoSuelo", ViewData["TipoSuelo"] as SelectList, htmlAttributes: new { @id = "TipoSueloId", @class = "form-control"})
-        <br />
-        <input type="submit" value="Buscar" />
-    }
     
 </div>
-<div style="float:right;width:70%; align-content:center">
+<div style="width:100%; align-content:center">
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NombreProducto)
+                @Html.DisplayName("Producto")
             </th>
 
             <th>
-                @Html.DisplayNameFor(model => model.TipoClima.NombreClima)
+                @Html.DisplayName("Clima óptimo")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TipoSuelo.NombreTipoSuelo)
+                @Html.DisplayName("Tipo suelo")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cultivo.NombreCultivo)
+                @Html.DisplayName("Tipo de cultivo")
             </th>
         </tr>
 

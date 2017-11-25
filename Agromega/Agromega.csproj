@@ -247,21 +247,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711250306556_AddCultivo.cs" />
-    <Compile Include="Migrations\201711250306556_AddCultivo.Designer.cs">
-      <DependentUpon>201711250306556_AddCultivo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711250928423_AddPrecio.cs" />
-    <Compile Include="Migrations\201711250928423_AddPrecio.Designer.cs">
-      <DependentUpon>201711250928423_AddPrecio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711251020099_AddLink.cs" />
-    <Compile Include="Migrations\201711251020099_AddLink.Designer.cs">
-      <DependentUpon>201711251020099_AddLink.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711251048349_AddLink1.cs" />
-    <Compile Include="Migrations\201711251048349_AddLink1.Designer.cs">
-      <DependentUpon>201711251048349_AddLink1.cs</DependentUpon>
+    <Compile Include="Migrations\201711251934154_AddCol.cs" />
+    <Compile Include="Migrations\201711251934154_AddCol.Designer.cs">
+      <DependentUpon>201711251934154_AddCol.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -285,9 +273,20 @@
   <ItemGroup>
     <Content Include="agromega.sql" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\boot2.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\clima.jpg" />
     <Content Include="Content\csd.css" />
+    <Content Include="Content\Detail.css" />
+    <Content Include="Content\FONDO.jpg" />
+    <Content Include="Content\FONDO2.jpg" />
+    <Content Include="Content\img1.jpg" />
+    <Content Include="Content\img2.jpg" />
+    <Content Include="Content\img3.jpg" />
+    <Content Include="Content\jav.js" />
+    <Content Include="Content\logoagromega.png" />
+    <Content Include="Content\lunallena.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -316,7 +315,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\Produccions\Delete.cshtml" />
-    <Content Include="Views\Produccions\Details.cshtml" />
     <Content Include="Views\Produccions\Edit.cshtml" />
     <Content Include="Views\Produccions\Index.cshtml" />
     <Content Include="Views\Noticias\Index.cshtml" />
@@ -325,6 +323,7 @@
     <Content Include="Views\Clima\Index.cshtml" />
     <Content Include="Views\CicloLunar\Index.cshtml" />
     <Content Include="Views\Produccions\Create.cshtml" />
+    <Content Include="Views\Produccions\Details.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -386,17 +385,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711250306556_AddCultivo.resx">
-      <DependentUpon>201711250306556_AddCultivo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711250928423_AddPrecio.resx">
-      <DependentUpon>201711250928423_AddPrecio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711251020099_AddLink.resx">
-      <DependentUpon>201711251020099_AddLink.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711251048349_AddLink1.resx">
-      <DependentUpon>201711251048349_AddLink1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711251934154_AddCol.resx">
+      <DependentUpon>201711251934154_AddCol.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

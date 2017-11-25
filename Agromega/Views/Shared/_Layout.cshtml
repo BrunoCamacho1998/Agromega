@@ -8,29 +8,40 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-top:-4%">
+       <img src="~/Content/logoagromega.png" class="img-responsive"style="align-content:center" width="33%"/>
+         
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <div class="navbar-nav">
+                    <div class="col-sm-3">
+                        <center><a class="nav-item nav-link" href="@Url.Action("Index","Home")">Home</a></center>
+                    </div>
+                    <div class="col-sm-3">
+                        <center><a class="nav-item nav-link" href="@Url.Action("Index", "CicloLunar")">Ciclo Lunar</a></center>
+                    </div>
+                    <div class="col-sm-3">
+                        <center> <a class="nav-item nav-link" href="@Url.Action("Index", "Distrito")">Distrito</a></center>
+                    </div>
+                    <div class="col-sm-3">
+                        <center><a class="nav-item nav-link" href="@Url.Action("Index", "Noticias")">Noticias</a></center>
+                    </div>
+                    <div class="col-sm-3">
+                        <center><a class="nav-item nav-link" href="@Url.Action("Index", "Produccions")">Productos</a></center>
+                    </div>
+                    </div>
+
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    </nav>
+
+
+
+
+    
     <div class="container body-content">
         @RenderBody()
-        <hr />
         
     </div>
 

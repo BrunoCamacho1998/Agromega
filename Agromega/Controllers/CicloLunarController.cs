@@ -11,6 +11,8 @@ namespace Agromega.Controllers
         // GET: CicloLunar
         public ActionResult Index()
         {
+            ViewBag.fecha = DateTime.Now.ToString("dd/MM/yyyy");
+            ViewBag.hora = DateTime.Now.ToString("hh:mm:ss");
             return View();
         }
 
