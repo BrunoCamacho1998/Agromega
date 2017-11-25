@@ -13,5 +13,7 @@ namespace Agromega.Models
         public TipoClima TipoClima { get; set; }
         public int TipoSueloId { get; set; }
         public TipoSuelo TipoSuelo { get; set; }
+        public int CultivoId { get; set; }
+        public Cultivo Cultivo { get; set; }
     }
 }

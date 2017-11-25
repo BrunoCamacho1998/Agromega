@@ -8,44 +8,89 @@ using System.Web;
 using System.Web.Mvc;
 using Agromega;
 using Agromega.Models;
+using System.Threading.Tasks;
+using Agromega.Services;
 
 namespace Agromega.Controllers
 {
     public class ProduccionsController : Controller
     {
         private AgroContext db = new AgroContext();
+        IProduccionServices prodser;
+        public class Mymodel
+        {
+            public IEnumerable<string> NomProd { get; set; }
+        }
+        
+        public ProduccionsController()
+        {
+            prodser = new ProduccionServices();
+        }
 
         // GET: Produccions
         [HttpGet]
         public ActionResult Index()
         {
+            
             using (var contextoBd = new AgroContext())
             {
-                var TipoClima = (from sd in contextoBd.TipoClima
-                                select new
-                                {
-                                    sd.TipoClimaId,
-                                    sd.NombreClima
-                                }).ToList();
-                var listaClima = new SelectList(TipoClima.OrderBy(o => o.TipoClimaId), "TipoClimaId", "NombreClima");
-                ViewData["TipoClima"] = listaClima;
+                var Tipocultivo = (from sd in contextoBd.TipoCultivo
+                                 select new
+                                 {
+                                     sd.CultivoId,
+                                     sd.NombreCultivo
+                                 }).ToList();
+                var listacultivo = new SelectList(Tipocultivo.OrderBy(o => o.CultivoId), "CultivoId", "NombreCultivo");
+                ViewData["TipoCultivo"] = listacultivo;
 
-                var TipoSuelo = (from sd in contextoBd.TipoSuelo
+                var Tiposuelo = (from sd in contextoBd.TipoSuelo
                                  select new
                                  {
                                      sd.TipoSueloId,
                                      sd.NombreTipoSuelo
                                  }).ToList();
-                var listaSuelo = new SelectList(TipoSuelo.OrderBy(o => o.TipoSueloId), "TipoSueloId", "NombreTipoSuelo");
+                var listaSuelo = new SelectList(Tiposuelo.OrderBy(o => o.TipoSueloId), "TipoSueloId", "NombreTipoSuelo");
                 ViewData["TipoSuelo"] = listaSuelo;
+
             }
-            return View(db.Produccion.ToList());
+            
+            var query = db.Produccion
+                    .Include("TipoClima")
+                    .Include("TipoSuelo")
+                    .Include("Cultivo");
+            return View(query.ToList());
         }
 
         [HttpPost]
-        public ActionResult Index(string Suelo,string Clima)
+        public ActionResult Index(string TipoSuelo, string Cultivo)
         {
-            return View();
+            var Tipocultivo = (from sd in db.TipoCultivo
+                               select new
+                               {
+                                   sd.CultivoId,
+                                   sd.NombreCultivo
+                               }).ToList();
+            var listacultivo = new SelectList(Tipocultivo.OrderBy(o => o.CultivoId), "CultivoId", "NombreCultivo", Cultivo);
+            ViewData["TipoCultivo"] = listacultivo;
+
+            var Tiposuelo = (from sd in db.TipoSuelo
+                             select new
+                             {
+                                 sd.TipoSueloId,
+                                 sd.NombreTipoSuelo
+                             }).ToList();
+            var listaSuelo = new SelectList(Tiposuelo.OrderBy(o => o.TipoSueloId), "TipoSueloId", "NombreTipoSuelo", TipoSuelo);
+            ViewData["TipoSuelo"] = listaSuelo;
+            
+            int cul = Convert.ToInt32(Cultivo);
+            int sl = Convert.ToInt32(TipoSuelo);
+            var query = db.Produccion
+                .Where(x=>x.TipoSuelo.TipoSueloId==sl)
+                .Where(x => x.Cultivo.CultivoId == cul)
+                .Include("TipoClima")
+                .Include("TipoSuelo")
+                .Include("Cultivo");
+            return View(query.ToList());
         }
         // GET: Produccions/Details/5
         public ActionResult Details(int? id)

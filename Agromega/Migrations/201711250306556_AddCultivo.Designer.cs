@@ -7,13 +7,13 @@ namespace Agromega.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Addnew : IMigrationMetadata
+    public sealed partial class AddCultivo : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Addnew));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCultivo));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711242219012_Addnew"; }
+            get { return "201711250306556_AddCultivo"; }
         }
         
         string IMigrationMetadata.Source

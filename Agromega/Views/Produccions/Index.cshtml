@@ -12,10 +12,18 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
 <div style="float:left;width:30%">
-    @Html.DropDownList("TipoClima", ViewData["TipoClima"] as SelectList, htmlAttributes: new { @id = "TipoClimaId", @class = "form-control" })
-    <br />
-    @Html.DropDownList("TipoSuelo", ViewData["Tiposuelo"] as SelectList, htmlAttributes: new { @id = "TipoSueloId", @class = "form-control" })
+    
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        @Html.DropDownList("Cultivo", ViewData["TipoCultivo"] as SelectList, htmlAttributes: new { @id = "CultivoId", @class = "form-control"})
+        <br />
+        @Html.DropDownList("TipoSuelo", ViewData["TipoSuelo"] as SelectList, htmlAttributes: new { @id = "TipoSueloId", @class = "form-control"})
+        <br />
+        <input type="submit" value="Buscar" />
+    }
+    
 </div>
 <div style="float:right;width:70%; align-content:center">
     <table class="table">
@@ -24,7 +32,15 @@
                 @Html.DisplayNameFor(model => model.NombreProducto)
             </th>
 
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoClima.NombreClima)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoSuelo.NombreTipoSuelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cultivo.NombreCultivo)
+            </th>
         </tr>
 
         @foreach (var item in Model)
@@ -33,11 +49,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.NombreProducto)
                 </td>
-
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ProduccionId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ProduccionId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ProduccionId })
+                    @Html.DisplayFor(modelItem => item.TipoClima.NombreClima)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoSuelo.NombreTipoSuelo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cultivo.NombreCultivo)
                 </td>
             </tr>
         }

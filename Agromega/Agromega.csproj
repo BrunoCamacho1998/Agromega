@@ -247,13 +247,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711242133556_AddProduccion.cs" />
-    <Compile Include="Migrations\201711242133556_AddProduccion.Designer.cs">
-      <DependentUpon>201711242133556_AddProduccion.cs</DependentUpon>
+    <Compile Include="Migrations\201711250306556_AddCultivo.cs" />
+    <Compile Include="Migrations\201711250306556_AddCultivo.Designer.cs">
+      <DependentUpon>201711250306556_AddCultivo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711242219012_Addnew.cs" />
-    <Compile Include="Migrations\201711242219012_Addnew.Designer.cs">
-      <DependentUpon>201711242219012_Addnew.cs</DependentUpon>
+    <Compile Include="Migrations\201711250314276_AddCultivox.cs" />
+    <Compile Include="Migrations\201711250314276_AddCultivox.Designer.cs">
+      <DependentUpon>201711250314276_AddCultivox.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -261,10 +261,16 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Produccion.cs" />
     <Compile Include="Models\TipoClima.cs" />
+    <Compile Include="Models\Cultivo.cs" />
     <Compile Include="Models\TipoSuelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Repository\ProduccionRepository.cs" />
+    <Compile Include="Repository\Conexion.cs" />
+    <Compile Include="Repository\IProduccionRepository.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Services\IProduccionServices.cs" />
+    <Compile Include="Services\ProduccionServices.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -371,11 +377,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711242133556_AddProduccion.resx">
-      <DependentUpon>201711242133556_AddProduccion.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711250306556_AddCultivo.resx">
+      <DependentUpon>201711250306556_AddCultivo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711242219012_Addnew.resx">
-      <DependentUpon>201711242219012_Addnew.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711250314276_AddCultivox.resx">
+      <DependentUpon>201711250314276_AddCultivox.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
