@@ -251,14 +251,23 @@
     <Compile Include="Migrations\201711250306556_AddCultivo.Designer.cs">
       <DependentUpon>201711250306556_AddCultivo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711250314276_AddCultivox.cs" />
-    <Compile Include="Migrations\201711250314276_AddCultivox.Designer.cs">
-      <DependentUpon>201711250314276_AddCultivox.cs</DependentUpon>
+    <Compile Include="Migrations\201711250928423_AddPrecio.cs" />
+    <Compile Include="Migrations\201711250928423_AddPrecio.Designer.cs">
+      <DependentUpon>201711250928423_AddPrecio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711251020099_AddLink.cs" />
+    <Compile Include="Migrations\201711251020099_AddLink.Designer.cs">
+      <DependentUpon>201711251020099_AddLink.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711251048349_AddLink1.cs" />
+    <Compile Include="Migrations\201711251048349_AddLink1.Designer.cs">
+      <DependentUpon>201711251048349_AddLink1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Precio_Actual.cs" />
     <Compile Include="Models\Produccion.cs" />
     <Compile Include="Models\TipoClima.cs" />
     <Compile Include="Models\Cultivo.cs" />
@@ -380,8 +389,14 @@
     <EmbeddedResource Include="Migrations\201711250306556_AddCultivo.resx">
       <DependentUpon>201711250306556_AddCultivo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711250314276_AddCultivox.resx">
-      <DependentUpon>201711250314276_AddCultivox.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711250928423_AddPrecio.resx">
+      <DependentUpon>201711250928423_AddPrecio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711251020099_AddLink.resx">
+      <DependentUpon>201711251020099_AddLink.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711251048349_AddLink1.resx">
+      <DependentUpon>201711251048349_AddLink1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -47,7 +47,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.NombreProducto)
+                   <a href="@Url.Action("Details", "Produccions", new { id=item.ProduccionId })">@Html.DisplayFor(modelItem=>item.NombreProducto)</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TipoClima.NombreClima)
@@ -58,6 +58,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Cultivo.NombreCultivo)
                 </td>
+               
             </tr>
         }
 

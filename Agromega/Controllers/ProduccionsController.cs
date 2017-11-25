@@ -93,18 +93,17 @@ namespace Agromega.Controllers
             return View(query.ToList());
         }
         // GET: Produccions/Details/5
+        [HttpGet]
+        
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Produccion produccion = db.Produccion.Find(id);
-            if (produccion == null)
-            {
-                return HttpNotFound();
-            }
-            return View(produccion);
+            var producto = db.Produccion.Find(id);
+            ViewBag.prod = producto.NombreProducto;
+
+            var query = db.Precio_Actual
+                .Include("Produccion")
+                .Where(x => x.ProduccionId == id);
+            return View(query.ToList());
         }
 
         // GET: Produccions/Create

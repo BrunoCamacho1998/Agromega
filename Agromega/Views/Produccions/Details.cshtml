@@ -1,35 +1,44 @@
-﻿@model Agromega.Models.Produccion
+﻿@model IEnumerable<Agromega.Models.Precio_Actual>
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Index</h2>
 
-<div>
-    <h4>Produccion</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NombreProducto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NombreProducto)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Clima)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Clima)
-        </dd>
-
-    </dl>
-</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProduccionId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Create New", "Create")
 </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Produccion.NombreProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Año)
+        </th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>
+            @ViewBag.prod
+        </td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Año)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+
+        </tr>
+    }
+
+</table>

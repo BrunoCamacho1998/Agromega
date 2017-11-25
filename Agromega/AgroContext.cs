@@ -13,6 +13,8 @@
         public DbSet<TipoClima> TipoClima { get; set; }
         public DbSet<TipoSuelo> TipoSuelo { get; set; }
         public DbSet<Cultivo> TipoCultivo { get; set; }
+        public DbSet<Precio_Actual> Precio_Actual { get; set; }
+        
 
         public AgroContext()
             : base("name=AgroContext")
