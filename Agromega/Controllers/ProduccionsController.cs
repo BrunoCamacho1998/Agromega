@@ -16,11 +16,37 @@ namespace Agromega.Controllers
         private AgroContext db = new AgroContext();
 
         // GET: Produccions
+        [HttpGet]
         public ActionResult Index()
         {
+            using (var contextoBd = new AgroContext())
+            {
+                var TipoClima = (from sd in contextoBd.TipoClima
+                                select new
+                                {
+                                    sd.TipoClimaId,
+                                    sd.NombreClima
+                                }).ToList();
+                var listaClima = new SelectList(TipoClima.OrderBy(o => o.TipoClimaId), "TipoClimaId", "NombreClima");
+                ViewData["TipoClima"] = listaClima;
+
+                var TipoSuelo = (from sd in contextoBd.TipoSuelo
+                                 select new
+                                 {
+                                     sd.TipoSueloId,
+                                     sd.NombreTipoSuelo
+                                 }).ToList();
+                var listaSuelo = new SelectList(TipoSuelo.OrderBy(o => o.TipoSueloId), "TipoSueloId", "NombreTipoSuelo");
+                ViewData["TipoSuelo"] = listaSuelo;
+            }
             return View(db.Produccion.ToList());
         }
 
+        [HttpPost]
+        public ActionResult Index(string Suelo,string Clima)
+        {
+            return View();
+        }
         // GET: Produccions/Details/5
         public ActionResult Details(int? id)
         {
@@ -115,16 +141,16 @@ namespace Agromega.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        private void ListClima()
-        {
-            
-            var usuarios = (from sd in db.TipoClima select sd.NombreClima).ToList();
+        //private void ListClima()
+        //{
 
-                var listaUsuarios = new SelectList(usuarios, "TipoClimaId", "NombreClima");
+        //    List<TipoClima> usuarios = db.TipoClima.ToList();
 
-                ViewData["TipoClima"] = listaUsuarios;
+        //    var listaUsuarios = new SelectList(usuarios, "TipoClimaId", "NombreClima");
 
-        }
+        //    ViewData["TipoClima"] = listaUsuarios;
+
+        //}
 
         private void ListSuelo()
         {

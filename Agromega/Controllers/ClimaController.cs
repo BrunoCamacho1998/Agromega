@@ -12,6 +12,7 @@ namespace Agromega.Controllers
         // GET: Clima
         public ActionResult Index()
         {
+            
             return View(db.TipoClima.ToList());
         }
 

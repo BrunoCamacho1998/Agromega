@@ -12,30 +12,35 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-@Html.DropDownList("TipoClima", ViewData["TipoClima"] as SelectList, htmlAttributes: new { @id = "TipoClimaId", @class = "form-control" })
-
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NombreProducto)
+<div style="float:left;width:30%">
+    @Html.DropDownList("TipoClima", ViewData["TipoClima"] as SelectList, htmlAttributes: new { @id = "TipoClimaId", @class = "form-control" })
+    <br />
+    @Html.DropDownList("TipoSuelo", ViewData["Tiposuelo"] as SelectList, htmlAttributes: new { @id = "TipoSueloId", @class = "form-control" })
+</div>
+<div style="float:right;width:70%; align-content:center">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreProducto)
             </th>
-        
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreProducto)
-        </td>
-        
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProduccionId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProduccionId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProduccionId })
-        </td>
-    </tr>
-}
+            <th></th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreProducto)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProduccionId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ProduccionId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProduccionId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
